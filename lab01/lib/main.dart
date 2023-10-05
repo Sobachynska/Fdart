@@ -26,7 +26,7 @@ class OwnCard extends StatelessWidget {
           padding: EdgeInsets.all(20.0),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color.fromRGBO(4, 250, 25, 1), Colors.blueAccent],
+              colors: [Colors.blue, Color.fromARGB(255, 225, 145, 102)],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
             ),
@@ -35,51 +35,51 @@ class OwnCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               CircleAvatar(
-                radius: 60.0,
-                backgroundImage: FileImage(File('img/1.jpg')),
+                radius: 65.0,
+                backgroundImage: FileImage(File('lab01.jpg')),
               ),
               SizedBox(height: 20.0),
               Text(
-                'Nianchur Angelina',
+                'Sobachynska Anna',
                 style: TextStyle(
-                  fontSize: 26.0,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  fontSize: 27.0,
+                  fontWeight: FontWeight.w500,
+                  color: Color.fromARGB(255, 249, 249, 249),
                 ),
               ),
               SizedBox(height: 10.0),
               Text(
-                'Student of Ogienko university',
+                'Grafic design | Web design',
                 style: TextStyle(
-                  fontSize: 15.0,
+                  fontSize: 17.0,
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 20.0),
+              SizedBox(height: 30.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.email, color: Colors.white),
                   SizedBox(width: 10.0),
                   Text(
-                    'kn1b21.nianchur@kpnu.edu.ua',
+                    'kn1b21.sobachynska@kpnu.edu.ua',
                     style: TextStyle(
-                      fontSize: 12.0,
+                      fontSize: 13.0,
                       color: Colors.white,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 10.0),
+              SizedBox(height: 5.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.phone, color: Colors.white),
                   SizedBox(width: 10.0),
                   Text(
-                    '0965951600',
+                    '097 364 3546',
                     style: TextStyle(
-                      fontSize: 12.0,
+                      fontSize: 13.0,
                       color: Colors.white,
                     ),
                   ),
