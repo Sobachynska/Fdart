@@ -9,24 +9,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: OwnCard(),
+      home: VisitCard(),
     );
   }
 }
 
-class OwnCard extends StatelessWidget {
+class VisitCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Own Card'),
+        title: Text('Anna`s Visit Card'),
       ),
       body: Center(
         child: Container(
           padding: EdgeInsets.all(20.0),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.blue, Color.fromARGB(255, 225, 145, 102)],
+              colors: [Color.fromARGB(255, 225, 145, 102), Colors.blue],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
             ),
@@ -59,10 +59,8 @@ class OwnCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Icon(Icons.email, color: Colors.white),
-                  SizedBox(width: 10.0),
                   Text(
-                    'kn1b21.sobachynska@kpnu.edu.ua',
+                    'E-mail:  kn1b21.sobachynska@kpnu.edu.ua',
                     style: TextStyle(
                       fontSize: 13.0,
                       color: Colors.white,
@@ -74,10 +72,8 @@ class OwnCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Icon(Icons.phone, color: Colors.white),
-                  SizedBox(width: 10.0),
                   Text(
-                    '097 364 3546',
+                    'Phone:  +38 097 364 3546',
                     style: TextStyle(
                       fontSize: 13.0,
                       color: Colors.white,
