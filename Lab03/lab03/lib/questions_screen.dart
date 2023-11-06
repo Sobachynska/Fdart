@@ -4,8 +4,9 @@ import 'package:lab03/data/questions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key, required this.onSelectAnswer});
+  const QuestionsScreen({Key? key, required this.onSelectAnswer});
   final void Function(String answer) onSelectAnswer;
+
   @override
   State<QuestionsScreen> createState() {
     return _QuestionsScreen();
@@ -14,6 +15,7 @@ class QuestionsScreen extends StatefulWidget {
 
 class _QuestionsScreen extends State<QuestionsScreen> {
   var currentQuestionindex = 0;
+
   void answerQuestion(String selectedAnswer) {
     widget.onSelectAnswer(selectedAnswer);
     setState(() {
@@ -22,8 +24,11 @@ class _QuestionsScreen extends State<QuestionsScreen> {
   }
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     final currentQuestion = questions[currentQuestionindex];
+    double screenWidth = MediaQuery.of(context).size.width;
+    double fontSize = screenWidth * 0.032;
+
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -35,8 +40,8 @@ class _QuestionsScreen extends State<QuestionsScreen> {
             Text(
               currentQuestion.text,
               style: GoogleFonts.poppins(
-               color: const Color.fromARGB(255, 237, 223, 252),
-                fontSize: 24,
+                color: const Color.fromARGB(255, 237, 223, 252),
+                fontSize: fontSize,
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
