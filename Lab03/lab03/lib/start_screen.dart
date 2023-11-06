@@ -2,24 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen(this.startQuiz, {super.key});
+  const StartScreen(this.startQuiz, {Key? key}) : super(key: key);
   final void Function() startQuiz;
+
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    double imageSize = screenWidth * 0.3;
+    double fontSize = screenWidth * 0.032;
+
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.asset(
             'assets/images/image.jpg',
-            width: 350,
+            width: imageSize,
           ),
           const SizedBox(height: 30),
           Text(
             'Яка ти водичка "Караван"',
             style: GoogleFonts.poppins(
               color: const Color.fromARGB(255, 237, 223, 252),
-              fontSize: 24,
+              fontSize: fontSize,
             ),
           ),
           const SizedBox(height: 30),
