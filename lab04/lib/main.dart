@@ -2,11 +2,11 @@ import 'package:lab04/widgets/expenses.dart';
 import 'package:flutter/material.dart';
 
 var kColorScheme = ColorScheme.fromSeed(
-  seedColor: Color.fromARGB(255, 31, 115, 184),
+  seedColor: Color.fromARGB(255, 187, 125, 234),
 );
 var kDarkColorScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
-  seedColor: Color.fromARGB(255, 35, 100, 175),
+  seedColor: Color.fromARGB(255, 187, 125, 234),
 );
 void main() {
   runApp(MaterialApp(
@@ -53,7 +53,7 @@ void main() {
             ),
           ),
     ),
-    themeMode: ThemeMode.dark,
+    themeMode: ThemeMode.light,
     home: const Expenses(),
     debugShowCheckedModeBanner: false,
   ));

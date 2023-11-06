@@ -15,12 +15,12 @@ class _NewExpenseState extends State<NewExpense> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime? _selectedDate;
-  Category _selectedCategory = Category.leisure;
+  Category _selectedCategory = Category.freetime;
   String? _selectedFamilyMember; // Доданий випадаючий список
   final List<String> familyMembers = [
-    'Mother',
-    'Father',
-    'Sister',
+    'Mum',
+    'Dad',
+    'Brother',
     'Me'
   ]; // Список членів сім'ї
 
@@ -47,15 +47,15 @@ class _NewExpenseState extends State<NewExpense> {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-          title: const Text('Invalid input'),
+          title: const Text('Неправильні дані'),
           content: const Text(
-              'Please make a valid title, amount, date, and category was entered.'),
+              'Введіть дійсну назву, суму, дату та категорію.'),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.pop(ctx);
               },
-              child: const Text('Okay'),
+              child: const Text('Ок'),
             ),
           ],
         ),
@@ -84,7 +84,7 @@ class _NewExpenseState extends State<NewExpense> {
             controller: _titleController,
             maxLength: 50,
             decoration: const InputDecoration(
-              label: Text('Title'),
+              label: Text('Назва'),
             ),
           ),
           Row(
@@ -95,7 +95,7 @@ class _NewExpenseState extends State<NewExpense> {
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     prefixText: '\$ ',
-                    label: Text('Amount'),
+                    label: Text('Сума'),
                   ),
                 ),
               ),
@@ -108,7 +108,7 @@ class _NewExpenseState extends State<NewExpense> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(_selectedDate == null
-                        ? 'No date selected'
+                        ? 'Дата не вибрана'
                         : formatter.format(_selectedDate!)),
                     IconButton(
                       onPressed: _presentDatePicker,
@@ -178,11 +178,11 @@ class _NewExpenseState extends State<NewExpense> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text('Cancel'),
+                child: const Text('Скасувати'),
               ),
               ElevatedButton(
                 onPressed: _submitExpenseDate,
-                child: const Text('Save Expense'),
+                child: const Text('Зберегти витрати'),
               ),
             ],
           ),

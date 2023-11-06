@@ -15,22 +15,22 @@ class Expenses extends StatefulWidget {
 
 class _ExpensesState extends State<Expenses> {
   Map<String, List<Expense>> familyExpenses = {
-    'Mother': [], // Витрати для Member 1
-    'Father': [], // Витрати для Member 2
-    'Sister': [], // Витрати для Member 3
+    'Mum': [], // Витрати для Member 1
+    'Dad': [], // Витрати для Member 2
+    'Brother': [], // Витрати для Member 3
     'Me': [], // Витрати для Member 4
   };
 
   List<String> familyMembers = [
-    'Mother',
-    'Father',
-    'Sister',
+    'Mum',
+    'Dad',
+    'Brother',
     'Me',
   ]; // Список членів сім'ї
 
   List<Expense> allExpenses = []; // Усі витрати
 
-  String _selectedFamilyMember = 'Mother'; // Початковий вибраний член сім'ї
+  String _selectedFamilyMember = 'Mum'; // Початковий вибраний член сім'ї
   bool _showTotal = false; // Відображення загальних витрат по темах
   bool _showDropdown = true; // Відображати DropdownButton
 
@@ -66,9 +66,9 @@ class _ExpensesState extends State<Expenses> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           duration: const Duration(seconds: 3),
-          content: const Text('Expense deleted.'),
+          content: const Text('Витрати видалено.'),
           action: SnackBarAction(
-            label: 'Undo',
+            label: 'Скасувати',
             onPressed: () {
               setState(() {
                 familyExpenses[familyMember]!.insert(index, expense);
@@ -87,7 +87,7 @@ class _ExpensesState extends State<Expenses> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Expense Tracker'),
+        title: const Text('Витрати сім`ї'),
         actions: [
           IconButton(
             onPressed: _openAddExpenseOverlay,
@@ -108,7 +108,7 @@ class _ExpensesState extends State<Expenses> {
                 }
               });
             },
-            child: Text(_showTotal ? 'Show Individual' : 'Show Total'),
+            child: Text(_showTotal ? 'Показати індивідуальну' : 'Показати загальну суму'),
           ),
           if (_showDropdown)
             DropdownButton(
@@ -145,7 +145,7 @@ class _ExpensesState extends State<Expenses> {
                     onRemoveExpense: _removeExpense,
                   )
                 : const Center(
-                    child: Text('No expenses found. Start adding some!'),
+                    child: Text('Витрат не знайдено. Почніть додавати щось!'),
                   ),
           ),
         ],

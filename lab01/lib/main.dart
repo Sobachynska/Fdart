@@ -17,13 +17,18 @@ class MyApp extends StatelessWidget {
 class VisitCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+     double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    bool isLandscape = screenWidth > screenHeight;
+
+    
     return Scaffold(
       appBar: AppBar(
         title: Text('Anna`s Visit Card'),
       ),
       body: Center(
         child: Container(
-          padding: EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(isLandscape ? 40.0 : 20.0),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [Color.fromARGB(255, 225, 145, 102), Colors.blue],
@@ -31,15 +36,22 @@ class VisitCard extends StatelessWidget {
               end: Alignment.topCenter,
             ),
           ),
-          child: Column(
+             child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              CircleAvatar(
-                radius: 65.0,
-                backgroundImage: FileImage(File('lab01.jpg')),
-              ),
-              SizedBox(height: 20.0),
-              Text(
+              if (isLandscape)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    CircleAvatar(
+                      radius: 120.0,
+                     backgroundImage: AssetImage('assets/1.jpg'),
+                    ),
+                    SizedBox(width: 20.0),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [   
+                        Text(
                 'Sobachynska Anna',
                 style: TextStyle(
                   fontSize: 27.0,
@@ -54,28 +66,61 @@ class VisitCard extends StatelessWidget {
                   fontSize: 17.0,
                   color: Colors.white,
                 ),
-              ),
-              SizedBox(height: 30.0),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              
+ if (!isLandscape)
+                Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 60.0,
+                     backgroundImage: AssetImage('assets/1.jpg'),
+                    ),
+                    SizedBox(height: 20.0),
+                    Text(
+                      'Sobachynska Anna',
+                      style: TextStyle(
+                        fontSize: 26.0,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+                    Text(
+                      'Grafic design | Web design',
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+
+              SizedBox(height: isLandscape ? 40.0 : 20.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
                     'E-mail:  kn1b21.sobachynska@kpnu.edu.ua',
                     style: TextStyle(
-                      fontSize: 13.0,
-                      color: Colors.white,
+                      fontSize: isLandscape ? 12.0 : 12.0,
+                       color: Colors.white,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 5.0),
+
+              SizedBox(height: isLandscape ? 20.0 : 12.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
                     'Phone:  +38 097 364 3546',
-                    style: TextStyle(
-                      fontSize: 13.0,
+                   style: TextStyle(
+                      fontSize: isLandscape ? 12.0 : 12.0,
                       color: Colors.white,
                     ),
                   ),

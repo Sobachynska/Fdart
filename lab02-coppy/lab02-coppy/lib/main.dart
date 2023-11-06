@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; 
- 
+ import 'dart:io';
+
 void main() { 
   runApp(MyApp()); 
 } 
@@ -22,10 +23,21 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar( 
         title: Text('Переглядач картинок :)'), 
       ), 
-      body: Column( 
+      body: LayoutBuilder(
+          builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: Center(
+              child: Column(
         children: [ 
-          Text('Переглядач картинок: Види цукерок', style: TextStyle(fontSize: 26), textAlign: TextAlign.center,), 
-          Image.asset('assets/choco/asorti.jpg', width: 500, height: 350), 
+         SizedBox(height: 20),
+          Text(
+            'Переглядач картинок: Види цукерок', 
+            style: TextStyle(fontSize: 26), 
+            textAlign: TextAlign.center,
+            ), 
+             SizedBox(height: 20),
+          Image.asset('assets/choco/asorti.jpg', width: constraints.maxWidth, height: constraints.maxHeight * 0.4), 
+           SizedBox(height: 20),
           Row( 
             mainAxisAlignment: MainAxisAlignment.spaceAround, 
             children: [ 
@@ -34,8 +46,8 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push( 
                     context, 
                     MaterialPageRoute( 
-                      builder: (context) => CategoryScreen( 
-                          'Шоколадні цукерки', 'assets/choco'), 
+                      builder: (context) => 
+                           CategoryScreen('Шоколадні цукерки', 'assets/choco'), 
                     ), 
                   ); 
                 }, 
@@ -46,8 +58,8 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push( 
                     context, 
                     MaterialPageRoute( 
-                      builder: (context) => CategoryScreen( 
-                          'Горіхові цукерки', 'assets/nut'), 
+                      builder: (context) => 
+                           CategoryScreen('Горіхові цукерки', 'assets/nut'), 
                     ), 
                   ); 
                 }, 
@@ -64,15 +76,19 @@ class HomeScreen extends StatelessWidget {
                   ); 
                 }, 
                 child: Text('Фруктові цукерки'), 
-              ), 
-            ], 
-          ), 
-        ], 
-      ), 
-    ); 
-  } 
-} 
- 
+               ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
 class CategoryScreen extends StatefulWidget {
   final String categoryName;
   final String imagePath;
@@ -109,15 +125,18 @@ class _CategoryScreenState extends State<CategoryScreen> {
       appBar: AppBar(
         title: Text(widget.categoryName),
       ),
-      body: Center(
+      body: LayoutBuilder(
+         builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              '${widget.imagePath}/${widget.categoryName.toLowerCase()}-$currentImageIndex.jpg',
-              width: 200,
-              height: 200,
+            Image.asset('${widget.imagePath}/${widget.categoryName.toLowerCase()}-$currentImageIndex.jpg',
+              width: constraints.maxWidth,
+                    height: constraints.maxHeight * 0.4,
             ),
+             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -136,9 +155,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 Navigator.pop(context);
               },
               child: Text('На головну'),
+             ),
+                ],
+              ),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
